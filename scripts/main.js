@@ -1,4 +1,3 @@
-// ===== State & Storage =====
 const STORAGE_KEY = "todoApp:state:v1";
 const defaultState = { lists: [], activeListId: null, filter: "all" };
 
@@ -26,7 +25,6 @@ function uid() {
 
 let state = loadState();
 
-// ===== DOM refs =====
 const el = {
   newListName: document.getElementById("newListName"),
   addListBtn: document.getElementById("addListBtn"),
@@ -42,7 +40,6 @@ const el = {
   clearCompletedBtn: document.getElementById("clearCompletedBtn"),
 };
 
-// ===== Helpers =====
 function getActiveList() {
   return state.lists.find(l => l.id === state.activeListId) || null;
 }
@@ -55,7 +52,6 @@ function applyFilter(items) {
   }
 }
 
-// ===== Renderers =====
 function renderLists() {
   el.lists.innerHTML = "";
   if (state.lists.length === 0) {
@@ -164,7 +160,6 @@ function renderItems() {
 
 function renderAll() { renderLists(); renderHeader(); renderFilters(); renderItems(); }
 
-// ===== Events =====
 el.addListBtn.addEventListener("click", () => {
   const name = el.newListName.value.trim();
   if (!name) return;
@@ -222,5 +217,4 @@ el.clearCompletedBtn.addEventListener("click", () => {
   renderItems();
 });
 
-// First paint
 renderAll();
