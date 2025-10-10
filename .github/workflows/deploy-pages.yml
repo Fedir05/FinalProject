@@ -18,9 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          pwd
+          ls -la
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./FinalProject   # або "." якщо файли в корені
+          path: .   # беремо файли з кореня (де лежить index.html)
   deploy:
     needs: upload
     runs-on: ubuntu-latest
